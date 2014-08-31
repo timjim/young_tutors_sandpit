@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h2>Name:</h2>
+  <%= @user.name %>
+</p>
+
+<p>
+  <h2>Email:</h2>
+  <%= @user.email %>
+</p>
+
+<p>
+  <h2>Pending Requests from Users who want to be your Student:</h2>
+  <% @user.pending_invites_to_be_a_tutor.each do |invite| %>
+    <strong>Student Name</strong>
+    <%= invite.student.name %>
+    <br>
+    <strong>Subject</strong>
+    <%= invite.subject.name %>
+    <br>
+    <strong>Message</strong>
+    "<%= invite.message %>"
+    <br>
+    <strong>
+      <%= link_to 'Accept' %><br>
+      <%= link_to 'Reject' %>
+    </strong>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %>
+<%= link_to 'Back', users_path %>
